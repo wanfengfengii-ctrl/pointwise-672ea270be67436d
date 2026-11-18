@@ -1,0 +1,11 @@
+{
+  "batch_id": "LOT-17",
+  "source_scale": [1, 10],
+  "pages": [
+    {
+      "page_id": "P1",
+      "columns": ["specimen_id", "reading"],
+      "rows": [["x", 200]]
+    }
+  ]
+}

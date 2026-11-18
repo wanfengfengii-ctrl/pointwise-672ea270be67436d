@@ -1,0 +1,7 @@
+{
+  "batch_id": "LOT-17",
+  "version": "v1",
+  "specimens": ["x", "y"],
+  "limits": {"x": 20, "y": 20},
+  "scale": [1, 1]
+}

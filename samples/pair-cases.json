@@ -1,0 +1,42 @@
+{
+  "path": {"batch_id": "P-01", "roster": ["x", "y", "z"], "exports": [
+    {"source_id": "E1", "specimens": ["y", "x"], "readings": [10, 20]},
+    {"source_id": "E2", "specimens": ["y", "z"], "readings": [10, 20]}
+  ]},
+  "independent": {"batch_id": "P-02", "roster": ["x", "y", "z", "w"], "exports": [
+    {"source_id": "E1", "specimens": ["x", "y"], "readings": [10, 20]},
+    {"source_id": "E2", "specimens": ["z", "w"], "readings": [10, 20]}
+  ]},
+  "odd": {"batch_id": "P-03", "roster": ["x", "y", "z"], "exports": [
+    {"source_id": "E1", "specimens": ["x", "y"], "readings": [10, 20]},
+    {"source_id": "E2", "specimens": ["y", "z"], "readings": [10, 20]},
+    {"source_id": "E3", "specimens": ["x", "z"], "readings": [10, 20]}
+  ]},
+  "even": {"batch_id": "P-04", "roster": ["x", "y", "z", "w"], "exports": [
+    {"source_id": "E1", "specimens": ["x", "y"], "readings": [10, 20]},
+    {"source_id": "E2", "specimens": ["y", "z"], "readings": [10, 20]},
+    {"source_id": "E3", "specimens": ["z", "w"], "readings": [10, 20]},
+    {"source_id": "E4", "specimens": ["w", "x"], "readings": [10, 20]}
+  ]},
+  "anchored": {"batch_id": "P-05", "roster": ["x", "y", "z"], "exports": [
+    {"source_id": "E1", "specimens": ["x", "y"], "readings": [10, 20]},
+    {"source_id": "E2", "specimens": ["y", "z"], "readings": [10, 20]},
+    {"source_id": "E3", "specimens": ["y"], "readings": [20]}
+  ]},
+  "equal": {"batch_id": "P-06", "roster": ["x", "y", "z"], "exports": [
+    {"source_id": "E1", "specimens": ["x", "y"], "readings": [10, 10]},
+    {"source_id": "E2", "specimens": ["y", "z"], "readings": [10, 20]}
+  ]},
+  "shifted": {"batch_id": "P-07", "roster": ["x", "y", "z"], "exports": [
+    {"source_id": "E1", "specimens": ["x", "y"], "readings": [10, 20]},
+    {"source_id": "E2", "specimens": ["y", "z"], "readings": [20, 30]}
+  ]},
+  "disjoint": {"batch_id": "P-08", "roster": ["x", "y", "z"], "exports": [
+    {"source_id": "E1", "specimens": ["x", "y"], "readings": [10, 20]},
+    {"source_id": "E2", "specimens": ["y", "z"], "readings": [30, 40]}
+  ]},
+  "foreign": {"batch_id": "P-09", "roster": ["x", "y"], "exports": [
+    {"source_id": "E1", "specimens": ["x", "y"], "readings": [10, 20]},
+    {"source_id": "E2", "specimens": ["y", "z"], "readings": [10, 20]}
+  ]}
+}
