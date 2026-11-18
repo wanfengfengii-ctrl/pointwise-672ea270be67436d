@@ -6,6 +6,9 @@ from archive.records import FixedReading
 from intake.coverage import order_covered_rows
 from intake.identity import identify_named_import
 from intake.scales import NormalizationError, normalize_reading, parse_source_scale
+from pairs.model import PairBatch, parse_pair_batch
+from pairs.solve import require_joint_interpretation
+from pairs.storage import record_batch
 from portal.columns import BadRecording
 from portal.recording import decode_named_recording
 from runs.registry import get_roster
@@ -42,3 +45,25 @@ def import_named(
         recording.raw,
         before_commit=before_commit,
     )
+
+
+def ingest_pairs(
+    db: sqlite3.Connection,
+    batch_id: object,
+    roster: object,
+    exports: object,
+    *,
+    before_commit: BeforeCommit | None = None,
+) -> str:
+    """Validate, solve, and atomically freeze one anonymous pair batch.
+
+    Returns the receipt, which is the batch id itself: anonymous batches are
+    keyed by their own unique identifier.  Invalid input raises a
+    ``ValueError`` subclass, a batch with no common interpretation raises
+    :class:`pairs.model.NoJointInterpretation`, and a same-id batch with
+    different evidence raises :class:`pairs.model.PairConflict`; nothing is
+    published unless a joint interpretation exists and the freeze commits.
+    """
+    batch: PairBatch = parse_pair_batch(batch_id, roster, exports)
+    require_joint_interpretation(batch)
+    return record_batch(db, batch, before_commit=before_commit)

@@ -70,3 +70,9 @@ class StoreCase(unittest.TestCase):
 
     def report_ids(self):
         return {row[0] for row in self.db.execute('SELECT report_id FROM review_reports')}
+
+    def pair_counts(self):
+        return self.db.execute('''
+            SELECT (SELECT count(*) FROM pair_batches),
+                   (SELECT count(*) FROM pair_sources)
+        ''').fetchone()

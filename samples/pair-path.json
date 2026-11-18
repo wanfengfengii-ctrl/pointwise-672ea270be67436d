@@ -1,0 +1,8 @@
+{
+  "batch_id": "P-01",
+  "roster": ["x", "y", "z"],
+  "exports": [
+    {"source_id": "E1", "specimens": ["y", "x"], "readings": [10, 20]},
+    {"source_id": "E2", "specimens": ["y", "z"], "readings": [10, 20]}
+  ]
+}

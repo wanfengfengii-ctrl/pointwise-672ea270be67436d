@@ -11,6 +11,8 @@ python3 -B -m demo
 
 演示把 `samples/` 中的资料导入独立临时库，先拒绝缺片录制，再发布完整录制。关闭来源和数据库连接后，演示重开归档，读回 x=20、y=22，按各片上限 20 签发，沿报告追到原页行。
 
+匿名双样演示 `python3 -B -m demo_pairs` 另开临时库，从录制门户取出 `path` 与 `independent` 两批，接纳后停用来源并关闭归档；重开后只凭两个回执领取 x/z，分别得到 2 对和 4 对。交班说明见 `PAIR_HANDOFF.md`。
+
 ## 接口
 
 用 `archive.database.open_archive(path)` 打开 SQLite 连接。依次调用 `runs.storage.init_roster_store(db)`、`archive.database.init_archive(db)` 和 `review.storage.init_report_store(db)` 建立持久结构。可在重开后重复初始化。登记、接纳和签发自行管理事务，应在连接空闲时调用。连接由调用者关闭。
@@ -25,6 +27,8 @@ python3 -B -m demo
 | `archive.readings.read_capture_evidence(db, receipt)` | `(capture, original_bytes)`，二者一起核验 |
 | `review.issue.issue_review(db, receipt)` | 已提交的 `ReviewReport`，含 `report_id` |
 | `review.issue.get_report(db, report_id)` | 指定报告号固定的签发快照 |
+| `intake.accept.ingest_pairs(db, batch_id, roster, exports)` | 已发布匿名批次回执（即批次标识） |
+| `archive.readings.read_pair(db, receipt, left, right)` | 该匿名回执内两片可同时成立的有序值对 |
 
 `specimens` 是非空的有序试片号序列。`limits` 以试片号为键，恰好为每片提供一个整数上限。`scale` 接受整数分子与分母组成的二元序列，或 `Fraction`，比值必须为正。清册保留原顺序。重登同版相同内容沿用原登记号，同版改变顺序或内容会发生冲突。登记新版本后，旧版仍可引用。
 

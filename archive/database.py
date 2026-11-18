@@ -6,6 +6,7 @@ from pathlib import Path
 from archive.originals import init_original_store
 from archive.receipts import init_receipt_store
 from archive.records import init_reading_store
+from pairs.tables import init_pair_store
 
 
 BeforeCommit = Callable[[sqlite3.Connection], None]
@@ -49,3 +50,4 @@ def init_archive(db: sqlite3.Connection) -> None:
         init_receipt_store(db)
         init_reading_store(db)
         init_original_store(db)
+        init_pair_store(db)
